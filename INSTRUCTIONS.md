@@ -52,7 +52,7 @@ It is also worth noting that some of the pre-existing code will only be necessar
 
 - [x] Each of the "movie items" on this page each must have a `data-testid="movieItem"` attribute.
 
-- [ ] Each of the movie items' posters (`<img>` elements) on this page must have a `data-testid="toDetails"` attribute.
+- [x] Each of the movie items' posters (`<img>` elements) on this page must have a `data-testid="toDetails"` attribute.
 
 
 ### Details Page
