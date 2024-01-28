@@ -1,4 +1,6 @@
 import { useSelector } from "react-redux"
+import './MovieDescription.css'
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
 
 
 
@@ -6,18 +8,26 @@ function MovieDescription()  {
     console.log('inside movie description')
 
     const movieDetails = useSelector(store =>store.movieDetails)
+    const history = useHistory();
     console.log("Movie from store", movieDetails);
 
-    
+    const backToMovies = () => {
+        console.log('in back to movies')
+        history.push('/')
+
+    }
 
     return (
-        <div>
-            <img src ={movieDetails.movie.poster}></img>
+        <>
+          <div className ="card"> 
+            <img src ={movieDetails.movie.poster} alt="Avatar" ></img>
             <h2>{movieDetails.movie.title}</h2>
             <p>{movieDetails.movie.description}</p>
         </div>
-
-      
+        <div>
+            <button onClick={(backToMovies)}>Return</button>
+        </div>
+      </>
     )
 }
 
