@@ -1,7 +1,7 @@
 import { Route, HashRouter as Router } from 'react-router-dom';
 import MovieList from '../MovieList/MovieList';
 import './App.css';
-import MovieDescription from '../MovieDescription/MovieDecription';
+import MovieDescription from '../MovieDetails/MovieDetails';
 
 function App() {
   return (

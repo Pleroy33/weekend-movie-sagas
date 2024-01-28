@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux"
-import './MovieDescription.css'
+import './MovieDetails.css'
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
 
 
@@ -19,13 +19,13 @@ function MovieDescription()  {
 
     return (
         <>
-          <div className ="card"> 
+          <div className ="card" data-testid="movieDetails"> 
             <img src ={movieDetails.movie.poster} alt="Avatar" ></img>
             <h2>{movieDetails.movie.title}</h2>
             <p>{movieDetails.movie.description}</p>
         </div>
         <div>
-            <button onClick={(backToMovies)}>Return</button>
+            <button data-testid="toList" onClick={(backToMovies)}>Return</button>
         </div>
       </>
     )

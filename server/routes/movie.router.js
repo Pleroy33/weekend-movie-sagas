@@ -4,8 +4,8 @@ const pool = require('../modules/pool')
 
 router.get('/', (req, res) => {
   const query = `
-    SELECT * FROM "movies"
-      ORDER BY "title" ASC;
+  SELECT * FROM "movies"
+ORDER BY "title" ASC;
   `;
   pool.query(query)
     .then(result => {
@@ -60,7 +60,7 @@ router.post('/', (req, res) => {
           // catch for second query
           console.log(err);
           res.sendStatus(500)
-      })
+        })
     }).catch(err => { // 👈 Catch for first query
       console.log(err);
       res.sendStatus(500)
@@ -68,3 +68,6 @@ router.post('/', (req, res) => {
 })
 
 module.exports = router;
+
+
+
