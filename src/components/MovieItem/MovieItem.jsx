@@ -3,8 +3,8 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function MovieItem({ movie })  {
 
-console.log('inside MovieItem');
-console.log('movie', movie.id);
+// console.log('inside MovieItem');
+// console.log('movie', movie.id);
 const dispatch = useDispatch();
 const history = useHistory();
 
