@@ -3,14 +3,32 @@ const router = express.Router();
 const pool = require('../modules/pool')
 
 router.get('/:id', (req, res) => {
- ` SELECT g.name FROM "movies" m
+  console.log('inside router')
+  const query = `SELECT movies.id, movies.title, movies.poster, movies.description FROM "movies"
+  
+  WHERE movies.id=$1
+  `
+  
+  
+  
+//   ` SELECT movies.id, movies.title, movies.poster, movies.description
+//   FROM "movies"
+// WHERE movies.id=$1`
 
-JOIN "movies_genres"  gm on m.id = gm.movie_id
-JOIN  "genres" g on gm.genre_id =g.id
-WHERE m.id = $1`
+  const queryParams = [req.params.id]
+  pool
+    .query(query, queryParams)
 
-const queryParams = [req.params.id]
-  res.sendStatus(500)
+    // res.send the result in rows
+    .then((result) => {
+      console.log("Result.Rows:", result.rows);
+      res.send(result.rows);
+    })
+    .catch((error) => {
+      console.log('error in details get:', error)
+      res.sendStatus(500)
+    })
+
 });
 
 module.exports = router;

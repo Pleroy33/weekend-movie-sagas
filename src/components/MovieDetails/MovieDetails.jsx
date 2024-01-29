@@ -4,12 +4,12 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
 
 
 
-function MovieDescription()  {
+function MovieDetails()  {
     console.log('inside movie description')
 
     const movieDetails = useSelector(store =>store.movieDetails)
+    console.log(movieDetails)
     const history = useHistory();
-    console.log("Movie from store", movieDetails);
 
     const backToMovies = () => {
         console.log('in back to movies')
@@ -20,9 +20,9 @@ function MovieDescription()  {
     return (
         <>
           <div className ="card" data-testid="movieDetails"> 
-            <img src ={movieDetails.movie.poster} alt="Avatar" ></img>
-            <h2>{movieDetails.movie.title}</h2>
-            <p>{movieDetails.movie.description}</p>
+            <img src ={movieDetails.poster} alt="Avatar" ></img>
+            <h2>{movieDetails.title}</h2>
+            <p>{movieDetails.description}</p>
         </div>
         <div>
             <button data-testid="toList" onClick={(backToMovies)}>Return</button>
@@ -31,15 +31,8 @@ function MovieDescription()  {
     )
 }
 
-export default MovieDescription
+export default MovieDetails
 
 
 
 
-//<div className="card">
-//   <img src="img_avatar.png" alt="Avatar" style="width:100%"></img>
-//   <div className="container">
-//     <h4><b>John Doe</b></h4>
-//     <p>Architect & Engineer</p>
-//   </div>
-// </div>

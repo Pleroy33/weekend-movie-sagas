@@ -7,7 +7,8 @@ import axios from 'axios';
 // Create the rootSaga generator function
 function* rootSaga() {
   yield takeEvery('FETCH_MOVIES', fetchAllMovies);
-  yield takeEvery('FETCH_GENRES', fetchAllGenres);
+  yield takeEvery('FETCH_GENRES', fetchAllGenres)
+  yield takeEvery('FETCH_DETAILS', fetchDetails);
 }
 
 function* fetchAllMovies() {
@@ -23,11 +24,22 @@ function* fetchAllMovies() {
     console.log('fetchAllMovies error:', error);
   }
 }
-
+function* fetchDetails(action) {
+  console.log(action.payload)
+  try {
+    const genreDetails = yield axios.get(`/api/genres/${action.payload}`)
+    yield put ({ 
+      type: 'FETCH_DETAILS',
+      payload: genreDetails.data
+    })
+  } catch (error) {
+    console.log('fetchGenreDetails error', error)
+  }
+}
 function* fetchAllGenres() {
   try {
     // Get the genres:
-    const genresResponse = yield axios.get(/api/genres);
+    const genresResponse = yield axios.get('/api/genres');
     //Set the value of the genres reducer:
     yield put({
       type: 'SET_GENRES',
@@ -50,11 +62,20 @@ const movies = (state = [], action) => {
   }
 }
 
+//Used to store the indvidual genre names
 
+// const genreNames = (state= [], action) => {
+//   switch (action.type) {
+//     case 'FETCH_GENRENAMES':
+//       return action.payload;
+//       default:
+//         return state;
+//   }
+// }
 // Used to store the individual movies description
-const movieDetails = (state = [], action) => {
+const movieDetails = (state = [], action) => { 
   switch (action.type) {
-    case 'SEE_DESCRIPTION':
+    case 'FETCH_DETAILS':
       return action.payload;
     default:
       return state;
