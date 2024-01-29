@@ -28,6 +28,7 @@ function* fetchDetails(action) {
   console.log(action.payload)
   try {
     const genreDetails = yield axios.get(`/api/genres/${action.payload}`)
+    console.log("detailsResponse:", genreDetails.data); 
     yield put ({ 
       type: 'FETCH_DETAILS',
       payload: genreDetails.data

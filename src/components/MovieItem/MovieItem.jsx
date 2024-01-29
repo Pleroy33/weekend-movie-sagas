@@ -11,7 +11,7 @@ const history = useHistory();
 const handleOnClick = () => {
     console.log ('inside handle onClick')
     // const payload = movie.id
-    dispatch({type:'FETCH_DETAILS', payload: movie})
+    dispatch({type:'FETCH_DETAILS', payload: movie.id})
     // dispatch({type:'FETCH_DESCRIPTION', payload:{movie}})
     history.push('/MovieDescription')
    };
