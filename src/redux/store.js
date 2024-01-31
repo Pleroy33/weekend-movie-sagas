@@ -25,12 +25,14 @@ function* fetchAllMovies() {
   }
 }
 function* fetchDetails(action) {
-  console.log(action.payload)
+  // console.log(action.payload) // used  to see what was coming from the action.payload
+  // get the id for the axios get 
   try {
     const genreDetails = yield axios.get(`/api/genres/${action.payload}`)
-    console.log("detailsResponse:", genreDetails.data); 
+    console.log("detailsResponse:", genreDetails.data); //seeing data is  coming back from the axios request
+    //Set the response data to the movieDetails reducer
     yield put ({ 
-      type: 'FETCH_DETAILS',
+      type: 'SET_DETAILS',
       payload: genreDetails.data
     })
   } catch (error) {
@@ -76,7 +78,7 @@ const movies = (state = [], action) => {
 // Used to store the individual movies description
 const movieDetails = (state = [], action) => { 
   switch (action.type) {
-    case 'FETCH_DETAILS':
+    case 'SET_DETAILS':
       return action.payload;
     default:
       return state;

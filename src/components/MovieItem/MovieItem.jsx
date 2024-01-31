@@ -1,6 +1,8 @@
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
+
+//component that separated out the individual movie from movies.map
 function MovieItem({ movie })  {
 
 // console.log('inside MovieItem');
@@ -8,12 +10,10 @@ function MovieItem({ movie })  {
 const dispatch = useDispatch();
 const history = useHistory();
 
-const handleOnClick = () => {
+const handleOnClick = () => {//function to handle onclick 
     console.log ('inside handle onClick')
-    // const payload = movie.id
-    dispatch({type:'FETCH_DETAILS', payload: movie.id})
-    // dispatch({type:'FETCH_DESCRIPTION', payload:{movie}})
-    history.push('/MovieDescription')
+    dispatch({type:'FETCH_DETAILS', payload: movie.id})//dispatch that uses FETCH_DETAILS  and sends the payload the id of the movie clicked on
+    history.push('/MovieDetails')//sends us to the MovieDetails page using useHistory
    };
 
 

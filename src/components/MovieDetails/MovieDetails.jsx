@@ -7,13 +7,13 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
 function MovieDetails()  {
     console.log('inside movie description')
 
-    const movieDetails = useSelector(store =>store.movieDetails)
-    console.log(movieDetails[0]?.id)
-    const history = useHistory();
+    const movieDetails = useSelector(store =>store.movieDetails)//set movieDetails to the movieDetails reducer 
+    console.log(movieDetails[0]?.id)//console.log to make sure we're accessing the data from the reducer.
+    const history = useHistory();//set history to useHistory
 
-    const backToMovies = () => {
+    const backToMovies = () => {//function that sends view back to MovieList (home) on button click
         console.log('in back to movies')
-        history.push('/')
+        history.push('/')//using useHistory to return view back to the home page
 
     }
 
